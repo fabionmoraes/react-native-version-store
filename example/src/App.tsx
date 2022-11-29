@@ -1,18 +1,26 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-version-store';
+import {
+  getBundleId,
+  getVersion,
+  versionStoreWithApp,
+} from 'react-native-version-store';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    async function load() {
+      const teste = await versionStoreWithApp();
+      console.log('teste', teste);
+    }
+
+    load();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {getVersion()}</Text>
+      <Text>{getBundleId()}</Text>
     </View>
   );
 }

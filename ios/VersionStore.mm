@@ -15,6 +15,21 @@ RCT_REMAP_METHOD(multiply,
     resolve(result);
 }
 
+- (NSString *) getBundleId {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
+- (NSString *) getAppVersion {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+- (NSDictionary *)constantsToExport {
+    return @{
+         @"bundleId": [self getBundleId],
+         @"appVersion": [self getAppVersion],
+     };
+}
+
 // Don't compile this code when we build for the old architecture.
 #ifdef RCT_NEW_ARCH_ENABLED
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
