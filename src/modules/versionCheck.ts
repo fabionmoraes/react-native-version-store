@@ -10,6 +10,7 @@ interface IVerifyVersionStoreWithApp {
 
 const getAndroidVersion = async (getCountry?: string) => {
   const urlGoogle = 'https://play.google.com/store/apps/details';
+  const textError = `App with bundle ID "${bundleId}" not found in Google Play.`;
 
   const url = `${urlGoogle}?id=${bundleId}&hl=${getCountry || country}`;
   let res;
@@ -27,16 +28,16 @@ const getAndroidVersion = async (getCountry?: string) => {
   } catch (e: any) {
     console.log(e.response);
     if (e.response && e.response.status && e.response.status === 404) {
-      throw new Error(
-        `App with bundle ID "${bundleId}" not found in Google Play.`
-      );
+      throw new Error(textError);
     }
     throw e;
   }
 
   let version: string = '';
 
-  if (!res.includes('Introuvable')) {
+  if (res.includes('Introuvable')) {
+    console.warn(textError);
+  } else {
     // @ts-ignore
     version = res.match(/\[\[\[['"]((\d+\.)+\d+)['"]\]\],/)[1];
   }
@@ -64,18 +65,18 @@ const getIosVersion = async (getCountry?: string) => {
   }
   // @ts-ignore
   if (!res.results.length) {
-    throw new Error('App for this bundle ID not found.');
+    console.warn('App for this bundle ID not found.');
   }
   // @ts-ignore
   res = res.results[0];
 
   return {
-    version: res.version || null,
-    released: res.currentVersionReleaseDate || res.releaseDate || null,
-    notes: res.releaseNotes || '',
-    url: res.trackViewUrl || res.artistViewUrl || res.sellerUrl || null,
+    version: res?.version || null,
+    released: res?.currentVersionReleaseDate || res?.releaseDate || null,
+    notes: res?.releaseNotes || '',
+    url: res?.trackViewUrl || res?.artistViewUrl || res?.sellerUrl || null,
     lastChecked: new Date().toISOString(),
-    publishedStore: !!res.version,
+    publishedStore: !!res?.version,
   };
 };
 

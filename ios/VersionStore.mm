@@ -15,18 +15,18 @@ RCT_REMAP_METHOD(multiply,
     resolve(result);
 }
 
-- (NSString *) getBundleId {
+- (NSString *) bundleId {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 }
 
-- (NSString *) getAppVersion {
+- (NSString *) appVersion {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 }
 
 - (NSDictionary *)constantsToExport {
     return @{
-         @"bundleId": [self getBundleId],
-         @"appVersion": [self getAppVersion],
+         @"getBundleId": [self bundleId],
+         @"getVersion": [self appVersion],
      };
 }
 
