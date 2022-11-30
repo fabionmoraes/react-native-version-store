@@ -48,6 +48,8 @@ const handle = async () => {
   "show": true,
   "url": "",
   "publishedStore": true,
+  "versionApp": "",
+  "versionStore": ""
 }
 ```
 
