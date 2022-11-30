@@ -51,13 +51,15 @@ const handle = async () => {
 }
 ```
 
-show = true: Nesse caso quer dizer que tá disponível para atualização na loja.
-show = false: Nessa caso não tem atualização disponível.
-url: Retorna a url da lojas (appstore / playstore)
-publishedStore = true: O app tá disponivel na loja.
-publishedStore = false: O app indisponível na loja.
-
 ## Exemplo de uso
+
+- **show = true:** nesse caso quer dizer que tá disponível para atualização na loja.
+- **show = false:** nessa caso não tem atualização disponível.
+- **url:** Retorna a url da lojas (appstore / playstore)
+- **publishedStore = true:** o app tá disponivel na loja.
+- **publishedStore = false:** o app indisponível na loja.
+- **versionApp:** traz a versão do app.
+- **versionStore:** traz a versão da loja.
 
 Utilizando a library react-native-version-store
 Open [use-react-native-version-store-example](https://github.com/fabionmoraes/native-version-store)
