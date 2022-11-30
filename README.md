@@ -34,16 +34,28 @@ useEffect(() => {
     setResult(event)
   })
 }, [])
+
+//or
+
+const handle = async () => {
+  const result = await versionStoreWithApp('BR') // Country por default é BR
+}
 ```
 ### Dados de retorno
 
 ```json
 {
-  "show": true, // or false,
-  "url": "", // or url appstore / playstore
-  "publishedStore": true, // or false not published in the store
+  "show": true,
+  "url": "",
+  "publishedStore": true,
 }
 ```
+
+show = true: Nesse caso quer dizer que tá disponível para atualização na loja.
+show = false: Nessa caso não tem atualização disponível.
+url: Retorna a url da lojas (appstore / playstore)
+publishedStore = true: O app tá disponivel na loja.
+publishedStore = false: O app indisponível na loja.
 
 ## Exemplo de uso
 

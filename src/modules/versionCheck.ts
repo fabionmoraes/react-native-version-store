@@ -86,6 +86,8 @@ export const versionStoreWithApp = async (
   show: boolean;
   url: string;
   publishedStore: boolean;
+  versionApp: string;
+  versionStore: string;
 }> => {
   const result =
     Platform.OS === 'ios'
@@ -101,5 +103,7 @@ export const versionStoreWithApp = async (
     show,
     url: result.publishedStore ? result.url : '',
     publishedStore: result.publishedStore,
+    versionApp: versionApp ? String(versionApp) : '',
+    versionStore,
   };
 };
