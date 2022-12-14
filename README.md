@@ -62,7 +62,8 @@ useEffect(() => {
   });
 }, []);
 ```
-<img src="[https://your-image-url.type](https://user-images.githubusercontent.com/53883958/207476714-722521fd-ef1d-455e-9e20-98b172f17763.png)" width="150">
+![image](https://user-images.githubusercontent.com/53883958/207477452-7779073b-af1a-4ee4-8e82-5359e7376ef7.png =x150)
+
 
 ### Dados de retorno
 
