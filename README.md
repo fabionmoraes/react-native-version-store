@@ -62,8 +62,6 @@ useEffect(() => {
   });
 }, []);
 ```
-![image](https://user-images.githubusercontent.com/53883958/207477918-97bce1de-9d7a-484c-b062-7bcdda926cd3.png)
-
 
 ### Dados de retorno
 
