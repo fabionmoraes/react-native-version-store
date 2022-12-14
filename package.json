@@ -33,6 +33,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
+    "example:start": "cd example && yarn start",
     "example:android": "cd example && yarn android",
     "example:ios": "cd example && yarn ios --simulator 'iPhone 14 Pro'",
     "bootstrap": "yarn example && yarn install && yarn example pods",

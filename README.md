@@ -26,21 +26,43 @@ Atualizar aplicativo quando a loja tiver com uma versão mais recente.
 ```ts
 import { versionStoreWithApp } from 'react-native-version-store';
 
-const [result, setResult] = useState(null)
+const [result, setResult] = useState(null);
 
 useEffect(() => {
-  versionStoreWithApp().then(event => {
-    console.log('event', event)
-    setResult(event)
-  })
-}, [])
+  versionStoreWithApp().then((event) => {
+    console.log('event', event);
+    setResult(event);
+  });
+}, []);
 
 //or
 
 const handle = async () => {
-  const result = await versionStoreWithApp('BR') // Country por default é BR
-}
+  const result = await versionStoreWithApp({
+    country: 'BR', // Country por default é BR -> Local da loja do app
+  });
+};
 ```
+
+### Utilização da library com ALERT
+
+```ts
+import { Alert } from 'react-native-version-store';
+
+useEffect(() => {
+  Alert({
+    countryStore: 'BR', // Não obrigatório por default BR
+    title: 'Atualizar app',
+    description: 'Atualize o seu app agora',
+    buttons: {
+      cancel: 'Agora Não',
+      open: 'Quero Atualizar',
+    },
+    handleClick: (result) => console.log(result),
+  });
+}, []);
+```
+
 ### Dados de retorno
 
 ```json
