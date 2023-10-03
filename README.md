@@ -17,6 +17,12 @@ yarn add react-native-version-store
 npm i react-native-version-store --save
 ```
 
+## IOS
+
+```bash
+cd ios && pod install
+```
+
 ## Usage
 
 Atualizar aplicativo quando a loja tiver com uma versão mais recente.
